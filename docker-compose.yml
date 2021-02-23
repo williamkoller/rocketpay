@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  elixir_db:
+    image: postgres:13.1-alpine
+    restart: always
+    container_name: elixir_db
+    environment:
+      POSTGRES_USER: 'docker'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_DB: 'elixir_db'
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - elixir_db:/var/lib/postgresql/data
+
+volumes:
+  elixir_db:
